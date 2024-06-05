@@ -2,10 +2,23 @@
 
 import UIKit
 
+protocol AddItemViewControllerDelegate: AnyObject {
+  func addItemViewControllerDidCancel(
+    _ controller: AddItemViewController)
+  func addItemViewController(
+    _ controller: AddItemViewController,
+    didFinishAdding item: ChecklistItem
+  )
+}
+
 class AddItemViewController: UITableViewController, UITextFieldDelegate {
 
     @IBOutlet weak var doneBarButton: UIBarButtonItem!
+    
     @IBOutlet weak var textField: UITextField!
+    
+    weak var delegate: AddItemViewControllerDelegate?
+
     override func viewDidLoad() {
     super.viewDidLoad()
       navigationItem.largeTitleDisplayMode = .never
@@ -15,25 +28,7 @@ class AddItemViewController: UITableViewController, UITextFieldDelegate {
       super.viewWillAppear(animated)
       textField.becomeFirstResponder()
     }
-    
-    // MARK: - Actions
-    @IBAction func cancel() {
-      navigationController?.popViewController(animated: true)
-    }
-
-    @IBAction func done() {
-      print("Contents of the text field: \(textField.text!)")
-      navigationController?.popViewController(animated: true)
-    }
-
-//    // MARK: - Table View Delegates
-//    override func tableView(
-//      _ tableView: UITableView,
-//      willSelectRowAt indexPath: IndexPath
-//    ) -> IndexPath? {
-//      return nil
-//    }
-//    
+       
     // MARK: - Text Field Delegates
     func textField(
       _ textField: UITextField,
@@ -54,6 +49,17 @@ class AddItemViewController: UITableViewController, UITextFieldDelegate {
     func textFieldShouldClear(_ textField: UITextField) -> Bool {
       doneBarButton.isEnabled = false
       return true
+    }
+
+    @IBAction func cancel() {
+      delegate?.addItemViewControllerDidCancel(self)
+    }
+
+    @IBAction func done() {
+      let item = ChecklistItem()
+      item.text = textField.text!
+
+      delegate?.addItemViewController(self, didFinishAdding: item)
     }
 
 }
