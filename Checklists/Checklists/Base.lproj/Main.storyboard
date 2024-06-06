@@ -16,22 +16,41 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="checkmark" indentationWidth="10" reuseIdentifier="ChecklistItem" id="oCJ-b4-jQx">
-                                <rect key="frame" x="0.0" y="50" width="393" height="43.666667938232422"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="detailDisclosureButton" indentationWidth="10" reuseIdentifier="ChecklistItem" id="oCJ-b4-jQx">
+                                <rect key="frame" x="0.0" y="50" width="393" height="43.333332061767578"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="oCJ-b4-jQx" id="xg6-Hy-YoT">
-                                    <rect key="frame" x="0.0" y="0.0" width="349" height="43.666667938232422"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="330.66666666666669" height="43.333332061767578"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" tag="1000" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B9R-uP-qok">
-                                            <rect key="frame" x="20" y="11" width="319" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="1001" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="√" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lfn-uk-kw2">
+                                            <rect key="frame" x="8" y="4.9999999999999982" width="13" height="27.333333333333329"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="13" id="QBw-Tp-rXL"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="22"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="1000" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B9R-uP-qok">
+                                            <rect key="frame" x="35" y="11" width="257" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="B9R-uP-qok" firstAttribute="leading" secondItem="Lfn-uk-kw2" secondAttribute="trailing" constant="14" id="LoA-84-iqQ"/>
+                                        <constraint firstItem="Lfn-uk-kw2" firstAttribute="leading" secondItem="xg6-Hy-YoT" secondAttribute="leadingMargin" constant="-12" id="TBj-Yv-46x"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="B9R-uP-qok" secondAttribute="trailing" constant="0.66666666666668561" id="dgC-GV-tMx"/>
+                                        <constraint firstItem="B9R-uP-qok" firstAttribute="centerY" secondItem="xg6-Hy-YoT" secondAttribute="centerY" id="ikN-JP-Doi"/>
+                                        <constraint firstItem="B9R-uP-qok" firstAttribute="top" secondItem="xg6-Hy-YoT" secondAttribute="topMargin" id="ose-oo-coQ"/>
+                                        <constraint firstItem="Lfn-uk-kw2" firstAttribute="top" secondItem="xg6-Hy-YoT" secondAttribute="topMargin" constant="-6" id="reQ-16-pGY"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="meK-b5-Vde" kind="show" identifier="EditItem" trigger="accessoryAction" id="zts-FC-8Z3"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -135,6 +154,9 @@
             <point key="canvasLocation" x="-468" y="-56"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="zts-FC-8Z3"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
