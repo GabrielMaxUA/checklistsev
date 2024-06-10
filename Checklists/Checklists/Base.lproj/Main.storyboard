@@ -68,12 +68,12 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iuS-Cg-jkR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="191.6030534351145" y="-56.338028169014088"/>
+            <point key="canvasLocation" x="434" y="-65"/>
         </scene>
         <!--Add item-->
         <scene sceneID="ytH-IY-GAK">
             <objects>
-                <tableViewController id="meK-b5-Vde" customClass="AddItemViewController" customModule="Checklists" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="meK-b5-Vde" customClass="ItemDetailViewController" customModule="Checklists" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" id="EpU-R0-lFg">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -127,7 +127,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="doneBarButton" destination="v54-rz-3aX" id="Ckn-aO-Z7D"/>
+                        <outlet property="doneBarButton" destination="v54-rz-3aX" id="9lY-0h-cHu"/>
                         <outlet property="textField" destination="217-lX-oRE" id="cyy-DS-SPd"/>
                     </connections>
                 </tableViewController>
@@ -155,7 +155,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="zts-FC-8Z3"/>
+        <segue reference="VjW-3K-F5M"/>
     </inferredMetricsTieBreakers>
     <resources>
         <systemColor name="systemBackgroundColor">
