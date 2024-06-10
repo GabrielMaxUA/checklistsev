@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="UIf-ob-lOs">
-    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <device id="retina6_12" orientation="portrait" appearance="dark"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -99,10 +99,10 @@
                                                 </textField>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="217-lX-oRE" firstAttribute="leading" secondItem="GW8-7k-e6Z" secondAttribute="leading" constant="20" symbolic="YES" id="535-ZZ-7WV"/>
-                                                <constraint firstAttribute="bottom" secondItem="217-lX-oRE" secondAttribute="bottom" constant="9.6699999999999999" id="Nn7-Lp-cX1"/>
-                                                <constraint firstItem="217-lX-oRE" firstAttribute="top" secondItem="GW8-7k-e6Z" secondAttribute="top" id="Y45-nn-hna"/>
-                                                <constraint firstAttribute="trailing" secondItem="217-lX-oRE" secondAttribute="trailing" constant="20" symbolic="YES" id="zsr-rd-6ta"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="217-lX-oRE" secondAttribute="bottom" constant="-1.3333333333333321" id="cse-Dg-7jq"/>
+                                                <constraint firstItem="217-lX-oRE" firstAttribute="leading" secondItem="GW8-7k-e6Z" secondAttribute="leadingMargin" id="db2-9e-AM3"/>
+                                                <constraint firstItem="217-lX-oRE" firstAttribute="trailing" secondItem="GW8-7k-e6Z" secondAttribute="trailingMargin" id="o59-wm-zNc"/>
+                                                <constraint firstItem="217-lX-oRE" firstAttribute="top" secondItem="GW8-7k-e6Z" secondAttribute="top" id="rwm-nA-9Sh"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
