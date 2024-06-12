@@ -8,12 +8,16 @@
 import UIKit
 
 class ChecklistViewController: UITableViewController, ItemDetailViewControllerDelegate {
+    var checklist: Checklist!
 
     var items = [ChecklistItem]()
 
     override func viewDidLoad() {
       super.viewDidLoad()
-      navigationController?.navigationBar.prefersLargeTitles = true
+      navigationController?.navigationBar.prefersLargeTitles = false
+        // Disable large titles for this view controller
+      navigationItem.largeTitleDisplayMode = .never
+        title = checklist.name
       // Load items
       loadChecklistItems()
 
@@ -89,10 +93,7 @@ class ChecklistViewController: UITableViewController, ItemDetailViewControllerDe
     }
 
     // MARK: - Navigation
-    override func prepare(
-      for segue: UIStoryboardSegue,
-      sender: Any?
-    ) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
       // 1
       if segue.identifier == "AddItem" {
         // 2
