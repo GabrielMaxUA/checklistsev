@@ -9,31 +9,16 @@ import UIKit
 
 class AllListsViewController: UITableViewController, ListDetailViewControllerDelegate {
     let cellIdentifier = "ChecklistCell"
-    var lists = [Checklist]()
-    
+    var dataModel: DataModel!
 
     override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        // Enable large titles
-        navigationController?.navigationBar.prefersLargeTitles = true
-
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellIdentifier)
-        
-          // Add placeholder data
-          var list = Checklist(name: "Birthdays")
-          lists.append(list)
-
-          list = Checklist(name: "Groceries")
-          lists.append(list)
-
-          list = Checklist(name: "Cool Apps")
-          lists.append(list)
-
-          list = Checklist(name: "To Do")
-          lists.append(list)
-
+      super.viewDidLoad()
+      navigationController?.navigationBar.prefersLargeTitles = true
+      tableView.register(
+        UITableViewCell.self,
+        forCellReuseIdentifier: cellIdentifier)
     }
+
     
     // MARK: - List Detail View Controller Delegates
     func listDetailViewControllerDidCancel(
@@ -46,8 +31,8 @@ class AllListsViewController: UITableViewController, ListDetailViewControllerDel
       _ controller: ListDetailViewController,
       didFinishAdding checklist: Checklist
     ) {
-      let newRowIndex = lists.count
-      lists.append(checklist)
+        let newRowIndex = dataModel.lists.count
+        dataModel.lists.append(checklist)
 
       let indexPath = IndexPath(row: newRowIndex, section: 0)
       let indexPaths = [indexPath]
@@ -60,7 +45,7 @@ class AllListsViewController: UITableViewController, ListDetailViewControllerDel
       _ controller: ListDetailViewController,
       didFinishEditing checklist: Checklist
     ) {
-      if let index = lists.firstIndex(of: checklist) {
+        if let index = dataModel.lists.firstIndex(of: checklist) {
         let indexPath = IndexPath(row: index, section: 0)
         if let cell = tableView.cellForRow(at: indexPath) {
           cell.textLabel!.text = checklist.name
@@ -68,18 +53,26 @@ class AllListsViewController: UITableViewController, ListDetailViewControllerDel
       }
       navigationController?.popViewController(animated: true)
     }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+      // 1
+      dataModel.lists.remove(at: indexPath.row)
 
+      // 2
+      let indexPaths = [indexPath]
+      tableView.deleteRows(at: indexPaths, with: .automatic)
+    }
 
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return lists.count
+        return dataModel.lists.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
       let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
       // Update cell information
-      let checklist = lists[indexPath.row]
+        let checklist = dataModel.lists[indexPath.row]
       cell.textLabel!.text = checklist.name
       cell.accessoryType = .detailDisclosureButton
 
@@ -87,7 +80,7 @@ class AllListsViewController: UITableViewController, ListDetailViewControllerDel
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let checklist = lists[indexPath.row]
+        let checklist = dataModel.lists[indexPath.row]
           performSegue(
             withIdentifier: "ShowChecklist",
             sender: checklist)
@@ -106,17 +99,6 @@ class AllListsViewController: UITableViewController, ListDetailViewControllerDel
           let controller = segue.destination as! ListDetailViewController
           controller.delegate = self
         }
-    }
-
-    override func tableView(
-      _ tableView: UITableView,
-      commit editingStyle: UITableViewCell.EditingStyle,
-      forRowAt indexPath: IndexPath
-    ) {
-      lists.remove(at: indexPath.row)
-
-      let indexPaths = [indexPath]
-      tableView.deleteRows(at: indexPaths, with: .automatic)
     }
 
 }
